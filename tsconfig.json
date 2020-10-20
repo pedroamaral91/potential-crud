@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "target": "es2015",
+    "module": "commonjs",
+    "jsx": "react",
+    "lib": [
+      "DOM",
+      "ESnext"
+    ],
+    "baseUrl": ".",
+    "outDir": "dist",
+    "rootDir": ".",
+    "paths": {
+      "~/*": ["packages/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+  ]
+} 

@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/api",
+      "packages/web"
+    ]
+  },
+  "scripts": {
+    "start": "concurrently \"yarn workspace web start\" \"yarn api:start\"",
+    "api:start": "yarn migration:run && yarn workspace api start",
+    "migration:run": "yarn workspace api migration:run"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
+}

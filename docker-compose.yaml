@@ -1,0 +1,35 @@
+version: "3.7"
+services:
+  application:
+    build:
+      context: .
+    image: gazin/app
+    container_name: app
+    volumes:
+      - ./:/home/application
+      - /home/application/node_modules
+    ports:
+      - "3000:3000"
+    networks:
+      - gazin-network
+    depends_on:
+      - "postgres"
+
+  postgres:
+    container_name: postgres-gazin
+    image: postgres:10
+    networks:
+      - gazin-network
+    environment:
+      POSTGRES_PASSWORD: postgres
+      PG_DATA: /var/lib/postgresql/data
+    volumes:
+      - gazinpgdata:/var/lib/postgresql/data
+      - ./packages/api/.docker/postgres_scripts:/docker-entrypoint-initdb.d/
+    ports:
+      - 5432:5432
+
+networks:
+  gazin-network:
+volumes:
+  gazinpgdata:
