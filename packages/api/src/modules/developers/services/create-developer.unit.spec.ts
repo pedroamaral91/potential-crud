@@ -1,13 +1,13 @@
 import { Test } from '@nestjs/testing';
 
 import { CreateDeveloperService } from './create-developer.service';
-import { create } from '../../../shared/db/fakes/developer-factory/developer.factory';
+import { DevelopersFactory } from '../../../shared/db/fakes/developer-factory/developer.factory';
 import { DevelopersEntity } from '../models/developers.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
 
 describe('Unit tests for Create Developer Service', () => {
   let createDeveloperService: CreateDeveloperService;
-  const developerDTO = create();
+  const developerDTO = DevelopersFactory.create();
   const developerRepositoryMock = {
     save: jest.fn(() => developerDTO),
   };

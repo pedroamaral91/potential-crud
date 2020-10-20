@@ -31,10 +31,11 @@ export class ListDevelopersService {
     const offset = (page - page) * limit;
     const developerQuery = this.developerRepository.createQueryBuilder();
 
-    if (name) developerQuery.where('name = :name', { name });
+    if (name) developerQuery.where('name like :name', { name: `%${name}%` });
     if (age) developerQuery.andWhere('age = :age', { age });
     if (birthday) developerQuery.andWhere('birthday = :birthday', { birthday });
-    if (hobby) developerQuery.andWhere('hobby = :hobby', { hobby });
+    if (hobby)
+      developerQuery.andWhere('hobby like :hobby', { hobby: `%${hobby}%` });
 
     const [developers, total] = await developerQuery
       .skip(offset)

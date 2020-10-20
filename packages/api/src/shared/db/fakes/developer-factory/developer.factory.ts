@@ -1,17 +1,19 @@
 import * as faker from 'faker';
+import { DeveloperDTO } from '../../../../modules/developers/dto/developer.dto';
 
-let id = 1;
-
-export const create = () => ({
-  id: id++,
-  name: faker.name.findName(),
-  age: faker.random.number(30),
-  sex: 'M',
-  hobby: 'whatever',
-  birthday: new Date().toDateString(),
-});
-
-export const createMany = (howMany = 3) =>
-  Array(howMany)
-    .fill(true)
-    .map(create);
+export const DevelopersFactory = {
+  create(): DeveloperDTO {
+    return {
+      name: faker.name.findName(),
+      age: faker.random.number(30),
+      sex: 'M',
+      hobby: 'whatever',
+      birthday: new Date().toDateString(),
+    };
+  },
+  createMany(howMany = 3): DeveloperDTO[] {
+    return Array(howMany)
+      .fill(true)
+      .map(this.create);
+  },
+};

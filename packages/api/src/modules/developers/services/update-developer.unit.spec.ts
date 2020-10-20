@@ -1,16 +1,16 @@
 import { Test } from '@nestjs/testing';
 
-import { createMany } from '../../../shared/db/fakes/developer-factory/developer.factory';
+import { DevelopersFactory } from '../../../shared/db/fakes/developer-factory/developer.factory';
 import { DevelopersEntity } from '../models/developers.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { UpdateDevelopersService } from './update-developer.service';
 
 describe('Unit tests for Update Developer Service', () => {
   let updateDeveloperService: UpdateDevelopersService;
-  const developersDTO = createMany(3);
+  const developersDTO = DevelopersFactory.create();
   const developerRepositoryMock = {
     findOneOrFail: jest.fn((id: number) => {
-      if (!developersDTO.find(developer => developer.id === id)) throw Error();
+      if (id === 0) throw Error();
     }),
     merge: jest.fn((_, developerDTO) => ({
       save: jest.fn(() => developerDTO),
@@ -32,18 +32,18 @@ describe('Unit tests for Update Developer Service', () => {
     );
   });
 
-  it('should throw error if id not exist', () => {
+  it('should throw error if developer id not exist', () => {
     expect(
       updateDeveloperService.execute({
-        developerDTO: developersDTO[0],
-        developerID: 32123,
+        developerDTO: developersDTO,
+        developerID: 0,
       }),
     ).rejects.toThrow();
   });
 
   it('should update a developer', async () => {
     const developerDTO = {
-      ...developersDTO[0],
+      ...developersDTO,
       name: 'frubis',
     };
     const service = await updateDeveloperService.execute({

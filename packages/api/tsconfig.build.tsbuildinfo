@@ -3412,7 +3412,7 @@
         "affectsGlobalScope": false
       },
       "./src/modules/developers/services/list-developers.service.ts": {
-        "version": "122c7173c92d6d09bf8a600526bb61ed9085c901c04c8550a3a70ab2e7659edd",
+        "version": "84aefab08f01dd0d41a34460befff3661a923ffbe79e169ceb40455bdcf62fed",
         "signature": "90821fe44e0f1e379d11a1fc11d06882a05585e0322c8dd484d180f2c845962c",
         "affectsGlobalScope": false
       },
