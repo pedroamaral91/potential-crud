@@ -46,7 +46,7 @@ export class DevelopersController {
   }
 
   @Get(':id')
-  public async show(@Query('id') id) {
+  public async show(@Param('id') id: number) {
     return this.showDeveloperService.execute({ developerID: id });
   }
 

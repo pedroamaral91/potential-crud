@@ -2,6 +2,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { useContainer } from 'typeorm';
 import { AppModule } from './app.module';
+import { GlobalExceptionFilters } from './shared/http/filters/global-exception.filters';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -9,6 +10,7 @@ async function bootstrap() {
   app.setGlobalPrefix('/api/v1');
 
   app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalFilters(new GlobalExceptionFilters());
 
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
 

@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { DevelopersEntity } from '../models/developers.entity';
 
 type ShowDeveloperServiceArgs = {
-  developerID: string;
+  developerID: number;
 };
 
 @Injectable()

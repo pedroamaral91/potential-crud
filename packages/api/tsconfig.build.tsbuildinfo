@@ -3417,8 +3417,8 @@
         "affectsGlobalScope": false
       },
       "./src/modules/developers/services/show-developer.service.ts": {
-        "version": "9b146d5c7cf782728f3492c8768355cbbb0d7bd6e0aa0244d5c107c6029598aa",
-        "signature": "1667fe1f72b3eafc3983a760297117448f7db95e52b2d40c0a5cfb6458dee743",
+        "version": "3c0ff708dbdea35ddf3d0aa3cac54f60892056377f3b2cccea66cf06b432aa1a",
+        "signature": "6ec25da2a6228c41622c19a94cf1953776fff9123ca12dfbab42ef7255016a29",
         "affectsGlobalScope": false
       },
       "./src/modules/developers/services/update-developer.service.ts": {
@@ -3432,8 +3432,8 @@
         "affectsGlobalScope": false
       },
       "./src/modules/developers/controllers/developers.controller.ts": {
-        "version": "a81701f568c9bcf9fd675379ddd9c52ca6b7a2acddf0e80f9037ae2408f7b0c8",
-        "signature": "bedbc977e2a84aa459d087a5e84b711f41b8641d9d2635b97b135b047cbca21e",
+        "version": "5d612c725b98d5b2e9e1881c50f7ca7fc1ff426c18529063f77c49064255aaec",
+        "signature": "9aa5c61ab530faf2ac94089539ca785ac0b88bb393500ad292299709d28e7c42",
         "affectsGlobalScope": false
       },
       "./src/modules/developers/developers.module.ts": {
@@ -3626,8 +3626,13 @@
         "signature": "7b5ed961a0e03965299591d73de8b8c41e8a68105ff4fc07a240b0dfb94a5a3d",
         "affectsGlobalScope": false
       },
+      "./src/shared/http/filters/global-exception.filters.ts": {
+        "version": "e7861adc078f92ff8f7d0cef3d401261ac105ecd6d028c8e0a970330c833626b",
+        "signature": "c382661b7dd42eb31b4f4ce3339963ce0c26a3645c1f1ad80c9daed37d716ec3",
+        "affectsGlobalScope": false
+      },
       "./src/main.ts": {
-        "version": "e87bd17ccf2803a5492bd02326a98dea53ed4cb58d4fe40fbc57308490f402ab",
+        "version": "18273646fb8eb0ec3d72c397409a350a9b9be15a000f75171f18c6148208d7dd",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -3642,8 +3647,8 @@
         "affectsGlobalScope": true
       },
       "./src/shared/db/fakes/developer-factory/developer.factory.ts": {
-        "version": "2e6e1e7541a5bb84e41730830252f67f2afd7d18d373f8bb2e9ab6d3ac12bc9b",
-        "signature": "fa0403a8c0cf0d9ec23b54c6516a185605f4920c51c350bb5e8c2180556807db",
+        "version": "416652730ff5a247611ac5c118d09fc6cc4103cae5b7202b53ada96dd804c975",
+        "signature": "54e519565852a68252f7ca7f4b4c285f8f7684816b677e0e9a843cb66dcdafe4",
         "affectsGlobalScope": false
       },
       "./src/shared/db/typeorm/migrations/1603156849547-developers.ts": {
@@ -3687,7 +3692,7 @@
         "affectsGlobalScope": false
       },
       "./src/shared/utils/util-tests.ts": {
-        "version": "28f6c8bd390740c8fb21bb35e8f9f3c9eb8c52aaa06c025993cea7a87ed3cc07",
+        "version": "56bc8db1e472abb1691af41f4d8e6213ca5d30cb2c51fc96044a5d7f86379fd2",
         "signature": "e8dc20d90b54ff77d07a06e4c58e6401e0eb8206d06894214bb4ec74b11fc294",
         "affectsGlobalScope": false
       },
@@ -6969,7 +6974,8 @@
         "../../node_modules/@nestjs/common/index.d.ts",
         "../../node_modules/@nestjs/core/index.d.ts",
         "../../node_modules/typeorm/index.d.ts",
-        "./src/app.module.ts"
+        "./src/app.module.ts",
+        "./src/shared/http/filters/global-exception.filters.ts"
       ],
       "./src/modules/developers/controllers/developers.controller.ts": [
         "../../node_modules/@nestjs/common/index.d.ts",
@@ -7048,7 +7054,8 @@
         "./src/shared/db/config/orm-driver.ts"
       ],
       "./src/shared/db/fakes/developer-factory/developer.factory.ts": [
-        "../../node_modules/@types/faker/index.d.ts"
+        "../../node_modules/@types/faker/index.d.ts",
+        "./src/modules/developers/dto/developer.dto.ts"
       ],
       "./src/shared/db/typeorm/connection/database-connection.service.ts": [
         "../../node_modules/@nestjs/common/index.d.ts",
@@ -7069,13 +7076,17 @@
         "./src/shared/config/config.service.ts",
         "./src/shared/db/typeorm/connection/database-connection.service.ts"
       ],
+      "./src/shared/http/filters/global-exception.filters.ts": [
+        "../../node_modules/@nestjs/common/index.d.ts"
+      ],
       "./src/shared/utils/util-tests.ts": [
         "../../node_modules/@nestjs/common/index.d.ts",
         "../../node_modules/@nestjs/testing/index.d.ts",
         "../../node_modules/@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type.d.ts",
         "../../node_modules/typeorm/index.d.ts",
         "./src/shared/config/config.module.ts",
-        "./src/shared/db/db.module.ts"
+        "./src/shared/db/db.module.ts",
+        "./src/shared/http/filters/global-exception.filters.ts"
       ]
     },
     "exportedModulesMap": {
@@ -10005,6 +10016,9 @@
       "./src/shared/config/config.module.ts": [
         "../../node_modules/@nestjs/common/index.d.ts"
       ],
+      "./src/shared/db/fakes/developer-factory/developer.factory.ts": [
+        "./src/modules/developers/dto/developer.dto.ts"
+      ],
       "./src/shared/db/typeorm/connection/database-connection.service.ts": [
         "../../node_modules/@nestjs/typeorm/index.d.ts",
         "./src/shared/config/config.service.ts"
@@ -10014,6 +10028,9 @@
       ],
       "./src/shared/db/typeorm/model/abstract.entity.ts": [
         "../../node_modules/typeorm/index.d.ts"
+      ],
+      "./src/shared/http/filters/global-exception.filters.ts": [
+        "../../node_modules/@nestjs/common/index.d.ts"
       ],
       "./src/shared/utils/util-tests.ts": [
         "../../node_modules/@nestjs/common/index.d.ts",
@@ -10829,6 +10846,7 @@
       "./src/shared/db/typeorm/migrations/1603156849547-developers.ts",
       "./src/shared/db/typeorm/model/abstract.entity.ts",
       "./src/shared/db/typeorm/typeorm.module.ts",
+      "./src/shared/http/filters/global-exception.filters.ts",
       "./src/shared/utils/util-tests.ts"
     ]
   },
