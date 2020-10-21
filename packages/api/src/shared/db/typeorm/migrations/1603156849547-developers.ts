@@ -30,7 +30,7 @@ export class developers1603156849547 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'birthday',
+            name: 'date_of_birth',
             type: 'timestamp',
           },
           {
