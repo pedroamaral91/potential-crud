@@ -15,5 +15,5 @@ export class DeveloperDTO {
   readonly hobby: string;
 
   @IsDateString()
-  readonly birthday: string;
+  readonly date_of_birth: string;
 }

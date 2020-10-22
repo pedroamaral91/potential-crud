@@ -30,6 +30,7 @@ export const Overlay = styled(Container)`
 `;
 
 export const LogoImage = styled(Logo)`
+  cursor: unset;
   width: 12.5rem;
   height: 6.25rem;
   animation: 1s ${scale} ease-in infinite;

@@ -23,21 +23,21 @@ type columnType = {
 
 type StickyHeadTableProps = {
   columns: columnType[];
-  rows: Record<string, unknown>[];
   rowsPerPageInit?: number;
   page: number;
-  totalCount: number;
   style?: CSSProperties;
   onChangePage: (page: number) => void;
+  slotRows: React.ReactNode;
+  totalCount: number;
 };
 
 const Table: React.FC<StickyHeadTableProps> = ({
   columns,
-  rows,
-  totalCount,
   onChangePage,
   page,
   style,
+  slotRows,
+  totalCount,
 }) => {
   const handleOnChangePage = useCallback(
     (_, currentPage: number) => {
@@ -47,9 +47,9 @@ const Table: React.FC<StickyHeadTableProps> = ({
   );
 
   return (
-    <PaperStyled style={style}>
+    <PaperStyled style={style} variant="outlined" color="primary" elevation={3}>
       <TableContainer>
-        <TableBase stickyHeader aria-label="sticky table">
+        <TableBase>
           <TableHead>
             <TableRow>
               {columns.map((column) => (
@@ -63,29 +63,7 @@ const Table: React.FC<StickyHeadTableProps> = ({
               ))}
             </TableRow>
           </TableHead>
-          <TableBody>
-            {rows.map((row, index) => {
-              return (
-                // eslint-disable-next-line react/no-array-index-key
-                <TableRow
-                  hover
-                  style={{ cursor: "pointer" }}
-                  role="checkbox"
-                  tabIndex={-1}
-                  key={index}
-                >
-                  {columns.map((column) => {
-                    const value = row[column.id] as string;
-                    return (
-                      <TableCell align={column.align} key={column.id}>
-                        {column.component || value}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })}
-          </TableBody>
+          <TableBody>{slotRows}</TableBody>
         </TableBase>
       </TableContainer>
       <TablePagination

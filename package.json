@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "concurrently \"yarn workspace web start\" \"yarn api:start\"",
-    "api:start": "yarn migration:run && yarn workspace api start",
+    "api:start": "yarn migration:run && yarn workspace api start:dev",
     "migration:run": "yarn workspace api migration:run",
     "api:test:integration": "yarn workspace api test:integration",
     "api:test:unit": "yarn workspace api test:unit"

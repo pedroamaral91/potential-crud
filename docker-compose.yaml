@@ -4,12 +4,13 @@ services:
     build:
       context: .
     image: gazin/app
-    container_name: app
+    container_name: app-gazin
     volumes:
       - ./:/home/application
       - /home/application/node_modules
     ports:
       - "3000:3000"
+      - "3333:3333"
     networks:
       - gazin-network
     depends_on:

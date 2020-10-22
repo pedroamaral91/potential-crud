@@ -1,15 +1,8 @@
 const BASE_DIR = process.env.NODE_ENV === 'production' ? 'dist' : 'src';
 
-const HOST =
-  process.env.NODE_ENV === 'development'
-    ? 'localhost'
-    : process.env.NODE_ENV === 'test'
-    ? 'localhost'
-    : process.env.DB_HOST;
-
 const config = {
   type: process.env.DB_DIALECT,
-  host: HOST,
+  host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,

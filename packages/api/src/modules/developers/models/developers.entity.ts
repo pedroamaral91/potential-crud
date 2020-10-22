@@ -16,5 +16,5 @@ export class DevelopersEntity extends AbstractEntity {
   hobby: string;
 
   @Column()
-  birthday: Date;
+  date_of_birth: Date;
 }

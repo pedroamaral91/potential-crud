@@ -32,13 +32,9 @@ export class DevelopersController {
     @Query('limit') limit,
     @Query('name') name,
     @Query('age') age,
-    @Query('birthday') birthday,
-    @Query('hobby') hobby,
   ) {
     return this.listDevelopersService.execute({
       age,
-      birthday,
-      hobby,
       limit,
       name,
       page,

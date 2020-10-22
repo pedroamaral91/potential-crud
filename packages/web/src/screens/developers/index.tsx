@@ -4,7 +4,7 @@ import { Grid, Box, Typography } from "@material-ui/core";
 import ListDevelopers from "./list";
 
 const Developers: React.FC = () => (
-  <Grid container spacing={10} direction="column" md={10}>
+  <Grid container spacing={10} direction="column">
     <Box>
       <Typography align="center" variant="h4" gutterBottom>
         Developers

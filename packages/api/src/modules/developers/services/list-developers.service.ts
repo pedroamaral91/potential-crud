@@ -6,8 +6,6 @@ import { DevelopersEntity } from '../models/developers.entity';
 type ListDevelopersServiceArgs = {
   name?: string;
   age?: string;
-  birthday?: string;
-  hobby?: string;
   page?: number;
   limit?: number;
 };
@@ -23,23 +21,19 @@ export class ListDevelopersService {
   public async execute({
     name,
     age,
-    birthday,
-    hobby,
     page = 1,
     limit = this.LIMIT,
   }: ListDevelopersServiceArgs) {
-    const offset = (page - page) * limit;
+    const offset = (page - 1) * limit;
     const developerQuery = this.developerRepository.createQueryBuilder();
 
     if (name) developerQuery.where('name like :name', { name: `%${name}%` });
     if (age) developerQuery.andWhere('age = :age', { age });
-    if (birthday) developerQuery.andWhere('birthday = :birthday', { birthday });
-    if (hobby)
-      developerQuery.andWhere('hobby like :hobby', { hobby: `%${hobby}%` });
 
     const [developers, total] = await developerQuery
       .skip(offset)
       .take(limit)
+      .orderBy('name', 'ASC')
       .getManyAndCount();
 
     return { page, total, developers };

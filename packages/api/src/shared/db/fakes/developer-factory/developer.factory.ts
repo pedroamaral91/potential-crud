@@ -8,7 +8,7 @@ export const DevelopersFactory = {
       age: faker.random.number(30),
       sex: 'M',
       hobby: 'whatever',
-      birthday: new Date().toISOString(),
+      date_of_birth: new Date().toISOString(),
     };
   },
   createMany(howMany = 3): DeveloperDTO[] {
