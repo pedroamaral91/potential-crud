@@ -85,6 +85,7 @@ const DeveloperForm: React.FC<DeveloperFormProps> = ({
                 <Controller
                   as={Input}
                   control={control}
+                  data-testid="nome"
                   label="Nome"
                   name="name"
                   margin="normal"
@@ -97,6 +98,7 @@ const DeveloperForm: React.FC<DeveloperFormProps> = ({
                   control={control}
                   label="Idade"
                   name="age"
+                  data-testid="age"
                   margin="normal"
                   type="number"
                   fullWidth
@@ -107,6 +109,7 @@ const DeveloperForm: React.FC<DeveloperFormProps> = ({
                   as={InputSelect}
                   control={control}
                   name="sex"
+                  data-testid="sex"
                   label="Sexo"
                   options={sexOptions}
                   style={{ margin: "16px 0 8px" }}
@@ -118,6 +121,7 @@ const DeveloperForm: React.FC<DeveloperFormProps> = ({
                   control={control}
                   name="date_of_birth"
                   label="Data de nascimento"
+                  data-testid="date_of_birth"
                   margin="normal"
                   fullWidth
                   format="dd/MM/yyyy"
@@ -132,6 +136,7 @@ const DeveloperForm: React.FC<DeveloperFormProps> = ({
                   control={control}
                   label="Hobby"
                   name="hobby"
+                  data-testid="hobby"
                   margin="normal"
                   fullWidth
                   error={!!errors.hobby}

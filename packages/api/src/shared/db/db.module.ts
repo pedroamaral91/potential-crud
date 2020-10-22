@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
-import OrmDriver from './config/orm-driver';
+import { TypeOrmConfigModule } from './typeorm/typeorm.module';
 
-const ormModule = OrmDriver.get('typeorm');
 @Module({
-  imports: [ormModule()],
+  imports: [TypeOrmConfigModule],
 })
 export class DbModule {}

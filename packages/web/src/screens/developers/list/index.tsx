@@ -16,6 +16,7 @@ import api from "../../../services/api";
 import { AxiosGetResponse, SanitizedData } from "../@types/index";
 
 import DeveloperRow from "./row";
+import { toast } from "react-toastify";
 
 export const columns = [
   { id: "name", label: "Nome", minWidth: 100 },
@@ -48,12 +49,12 @@ const ListDevelopers: React.FC = () => {
     []
   );
 
-  const fetchDevelopers = useCallback(async (page = 1) => {
+  const fetchDevelopers = useCallback(async () => {
     try {
       const queryParams = new URLSearchParams();
       if (name.current) queryParams.set("name", name.current);
       if (age.current) queryParams.set("age", age.current);
-      queryParams.set("page", page);
+      queryParams.set("page", currentPage.current);
       const { data } = await api.get<AxiosGetResponse>(
         `/developers?${queryParams.toString()}`
       );
@@ -61,11 +62,11 @@ const ListDevelopers: React.FC = () => {
         ...dev,
         date_of_birth: format(parseISO(dev.date_of_birth), "dd/MM/yyyy"),
       }));
-
       currentPage.current = data.page;
       totalDevelopers.current = data.total;
       setDevelopers(sanitizedData);
     } catch (err) {
+      toast.error("Nenhum developer encontrado");
       console.log({ err });
     }
   }, []);
@@ -76,8 +77,9 @@ const ListDevelopers: React.FC = () => {
 
   const handlePageChange = useCallback(
     (page: number) => {
-      fetchDevelopers(page + 1);
+      console.log({ page });
       currentPage.current = page + 1;
+      fetchDevelopers();
     },
     [fetchDevelopers]
   );

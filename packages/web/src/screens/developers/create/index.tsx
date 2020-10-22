@@ -33,7 +33,7 @@ const CreateDeveloper: React.FC = () => {
         date_of_birth: new Date(),
         sex: "",
         name: "",
-        age: Number.NaN,
+        age: 0,
         hobby: "",
       }}
       loading={loading}

@@ -7,13 +7,15 @@
     ]
   },
   "scripts": {
-    "bootstrap": "yarn install && yarn workspace web install && yarn workspace api install",
+    "bootstrap": "yarn install --network-timeout 100000",
     "start": "concurrently \"yarn workspace web start\" \"yarn api:start\"",
+    "migration:run": "yarn workspace api migration:run",
     "api:build": "yarn workspace api build",
     "api:start": "yarn migration:run && yarn workspace api start:dev",
-    "migration:run": "yarn workspace api migration:run",
+    "api:test": "yarn workspace api test:integration && yarn workspace api test:unit",
     "api:test:integration": "yarn workspace api test:integration",
-    "api:test:unit": "yarn workspace api test:unit"
+    "api:test:unit": "yarn workspace api test:unit",
+    "web:test": "yarn workspace web test"
   },
   "devDependencies": {
     "concurrently": "^5.3.0"

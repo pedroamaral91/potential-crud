@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { DevelopersEntity } from '../models/developers.entity';
@@ -35,6 +35,8 @@ export class ListDevelopersService {
       .take(limit)
       .orderBy('name', 'ASC')
       .getManyAndCount();
+
+    if (!developers.length) throw new NotFoundException();
 
     return { page, total, developers };
   }

@@ -14,7 +14,12 @@ describe('Unit tests for List Developer Service', () => {
     createQueryBuilder: jest.fn(() => ({
       skip: jest.fn(() => ({
         take: jest.fn(() => ({
-          getManyAndCount: jest.fn(() => [developersDTO, developersDTO.length]),
+          orderBy: jest.fn(() => ({
+            getManyAndCount: jest.fn(() => [
+              developersDTO,
+              developersDTO.length,
+            ]),
+          })),
         })),
       })),
     })),

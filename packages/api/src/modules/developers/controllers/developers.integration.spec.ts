@@ -25,7 +25,9 @@ describe('Developers integration tests', () => {
   });
 
   it('should list developers', async () => {
-    const developers = DevelopersFactory.createMany(5);
+    const developers = DevelopersFactory.createMany(5).sort((a, b) =>
+      a.name.localeCompare(b.name),
+    );
     await developerRepository.save(developers, { reload: false });
     const response = await request(app.getHttpServer()).get('/developers');
     expect(response.body).toMatchObject({ developers });

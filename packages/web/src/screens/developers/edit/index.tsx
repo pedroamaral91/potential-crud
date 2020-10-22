@@ -6,6 +6,7 @@ import api from "../../../services/api";
 import { Developer, SanitizedData } from "../@types/index";
 import DeveloperForm from "../form/index";
 import { Button } from "@material-ui/core";
+import axios, { CancelTokenSource } from "axios";
 
 const EditDeveloper: React.FC = () => {
   const history = useHistory();
@@ -13,14 +14,22 @@ const EditDeveloper: React.FC = () => {
   const [developer, setDeveloper] = useState<Developer>();
   const [loading, setLoading] = useState(false);
 
-  const fetchDeveloper = useCallback(async () => {
-    try {
-      const { data } = await api.get<Developer>(`/developers/${developerID}`);
-      setDeveloper(data);
-    } catch (err) {
-      toast.error("Usuário não encontrado");
-    }
-  }, [developerID]);
+  const fetchDeveloper = useCallback(
+    async (signal: CancelTokenSource) => {
+      try {
+        const { data } = await api.get<Developer>(
+          `/developers/${developerID}`,
+          {
+            cancelToken: signal.token,
+          }
+        );
+        setDeveloper(data);
+      } catch (err) {
+        toast.error("Usuário não encontrado");
+      }
+    },
+    [developerID]
+  );
 
   const handleSave = useCallback(
     async (developerData: SanitizedData) => {
@@ -53,7 +62,11 @@ const EditDeveloper: React.FC = () => {
 
   useEffect(() => {
     if (!developerID) return;
-    fetchDeveloper();
+    const source = axios.CancelToken.source();
+    fetchDeveloper(source);
+    return () => {
+      source.cancel();
+    };
   }, [developerID, fetchDeveloper]);
 
   return developer ? (
