@@ -7,7 +7,9 @@
     ]
   },
   "scripts": {
+    "bootstrap": "yarn install && yarn workspace web install && yarn workspace api install",
     "start": "concurrently \"yarn workspace web start\" \"yarn api:start\"",
+    "api:build": "yarn workspace api build",
     "api:start": "yarn migration:run && yarn workspace api start:dev",
     "migration:run": "yarn workspace api migration:run",
     "api:test:integration": "yarn workspace api test:integration",

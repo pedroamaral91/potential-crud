@@ -8,6 +8,8 @@ services:
     volumes:
       - ./:/home/application
       - /home/application/node_modules
+      - /home/application/packages/api/node_modules
+      - /home/application/packages/web/node_modules
     ports:
       - "3000:3000"
       - "3333:3333"
@@ -26,7 +28,7 @@ services:
       PG_DATA: /var/lib/postgresql/data
     volumes:
       - gazinpgdata:/var/lib/postgresql/data
-      - ./packages/api/.docker/postgres_scripts:/docker-entrypoint-initdb.d/
+      - ./.docker/postgres_scripts:/docker-entrypoint-initdb.d/
     ports:
       - 5432:5432
 
