@@ -25,6 +25,7 @@
     "migration:create": "yarn typeorm migration:create -n",
     "migration:run": "yarn typeorm migration:run",
     "migration:undo": "yarn typeorm migration:revert",
+    "seed": "ts-node src/shared/db/typeorm/seeders/seeder.ts",
     "typeorm": "ts-node ../../node_modules/typeorm/cli.js --config src/shared/db/typeorm/connection/ormconfig.ts"
   },
   "dependencies": {

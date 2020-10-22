@@ -77,7 +77,6 @@ const ListDevelopers: React.FC = () => {
 
   const handlePageChange = useCallback(
     (page: number) => {
-      console.log({ page });
       currentPage.current = page + 1;
       fetchDevelopers();
     },

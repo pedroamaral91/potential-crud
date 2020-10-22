@@ -13,8 +13,8 @@ describe('Unit tests for Show Developer Service', () => {
 
   const developerRepositoryMock = () =>
     jest.fn(() => ({
-      findOneOrFail: jest.fn((id: string) => {
-        if (id === '0') throw Error();
+      findOneOrFail: jest.fn((id: number) => {
+        if (id === 0) throw Error();
         return fakeDeveloper;
       }),
     }));
@@ -37,12 +37,12 @@ describe('Unit tests for Show Developer Service', () => {
 
   it('should throw error if developerID not exists', () => {
     expect(
-      showDeveloperService.execute({ developerID: '0' }),
+      showDeveloperService.execute({ developerID: 0 }),
     ).rejects.toThrowError();
   });
 
   it('should return a developer', async () => {
-    const service = await showDeveloperService.execute({ developerID: '' });
+    const service = await showDeveloperService.execute({ developerID: 1 });
     expect(service).toMatchObject(fakeDeveloper);
     expect(developerRepository.findOneOrFail).toBeCalled();
   });

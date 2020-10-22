@@ -18,6 +18,6 @@ import { DeleteDeveloperService } from './services/delete-developer.service';
     UpdateDevelopersService,
     DeleteDeveloperService,
   ],
-  exports: [TypeOrmModule],
+  exports: [TypeOrmModule, CreateDeveloperService],
 })
 export class DevelopersModule {}

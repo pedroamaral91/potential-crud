@@ -7,7 +7,7 @@ export const DevelopersFactory = {
       name: faker.name.findName(),
       age: faker.random.number(30),
       sex: 'M',
-      hobby: 'whatever',
+      hobby: faker.lorem.words(10),
       date_of_birth: new Date().toISOString(),
     };
   },

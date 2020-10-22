@@ -15,6 +15,7 @@
     "api:test": "yarn workspace api test:integration && yarn workspace api test:unit",
     "api:test:integration": "yarn workspace api test:integration",
     "api:test:unit": "yarn workspace api test:unit",
+    "api:seed": "yarn workspace api seed",
     "web:test": "yarn workspace web test"
   },
   "devDependencies": {
