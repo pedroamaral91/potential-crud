@@ -14,7 +14,8 @@ Criei uma estrutura **monorepo**, e para gerenciar os pacotes da aplicação, es
 
 A porta exposta pelo docker é\
 `3000` - Frontend\
-`3333` - Api
+`3333` - Api\
+`5551` - Postgres
 
 ### Testes
 
@@ -39,5 +40,4 @@ Os demais comandos foram utilizados na hora de desenvolvimento, caso necessite, 
 
 - Disponibilizei o `.env` no repositório para facilitar a vida para quem for rodar o projeto.
 - Adicionei a flag `--network-timeout 100000` no `yarn bootstrap`. Isso foi devido a network do docker no macOS estar muito lenta. Segue uma issue sobre a questão: [Link da issue](https://github.com/docker/for-mac/issues/3497)
-- Caso esteja utilizando macbook e falhar a conexão da network do docker entre os containers, alterar a chave do arquivo **.env** `DB_HOST=localhost` para `DB_HOST=host.docker.internal`
 - Optei por utilizar o hook `useRef` em algumas situações para evitar a re-renderização do componente. Alguns estados não tem necessidade de forçar a renderização do componente.

@@ -15,7 +15,10 @@ export class DatabaseConnectionService implements TypeOrmOptionsFactory {
         process.env.NODE_ENV === 'test'
           ? 'localhost'
           : this.configService.get('DB_HOST'),
-      port: Number(this.configService.get('DB_PORT')),
+      port:
+        process.env.NODE_ENV === 'test'
+          ? 5551
+          : Number(this.configService.get('DB_PORT')),
       username: this.configService.get('DB_USERNAME'),
       password: this.configService.get('DB_PASSWORD'),
       database:

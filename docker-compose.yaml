@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.3"
 services:
   application:
     build:
@@ -13,6 +13,8 @@ services:
     ports:
       - "3000:3000"
       - "3333:3333"
+    links:
+      - postgres
     networks:
       - gazin-network
     depends_on:
@@ -30,7 +32,7 @@ services:
       - gazinpgdata:/var/lib/postgresql/data
       - ./.docker/postgres_scripts:/docker-entrypoint-initdb.d/
     ports:
-      - 5432:5432
+      - 5551:5432
 
 networks:
   gazin-network:

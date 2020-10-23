@@ -83,16 +83,26 @@ const ListDevelopers: React.FC = () => {
     [fetchDevelopers]
   );
 
+  const handleRemove = useCallback(
+    (id: number) => {
+      const filterDeveloper = developers.filter(
+        (developer) => developer.id !== id
+      );
+      setDevelopers(filterDeveloper);
+    },
+    [setDevelopers, developers]
+  );
+
   const rows = useMemo(() => {
     return developers.map((developer) => (
       <DeveloperRow
         key={developer.id}
         developerDTO={developer}
-        fetchDevelopers={fetchDevelopers}
+        onRemove={handleRemove}
         currentPage={currentPage.current}
       />
     ));
-  }, [developers, fetchDevelopers]);
+  }, [developers, handleRemove]);
 
   useEffect(() => {
     fetchDevelopers();

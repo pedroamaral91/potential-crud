@@ -9,14 +9,14 @@ import { toast } from "react-toastify";
 
 type DeveloperRowProps = {
   developerDTO: SanitizedData;
-  fetchDevelopers: (page?: number) => void;
+  onRemove: (id: number) => void;
   currentPage: number;
 };
 
 const DeveloperRow: React.FC<DeveloperRowProps> = ({
   developerDTO,
   currentPage,
-  fetchDevelopers,
+  onRemove,
 }) => {
   const history = useHistory();
 
@@ -30,12 +30,12 @@ const DeveloperRow: React.FC<DeveloperRowProps> = ({
       try {
         await api.delete(`/developers/${developerDTO.id}`);
         toast.success("Desenvolvedor removido com sucesso!");
-        fetchDevelopers(currentPage);
+        onRemove(developerDTO.id);
       } catch (err) {
         toast.error("Falha ao remover desenvolvedor");
       }
     },
-    [currentPage, developerDTO.id, fetchDevelopers]
+    [developerDTO.id, onRemove]
   );
   return (
     <TableRow onClick={handleRedirect} hover style={{ cursor: "pointer" }}>
